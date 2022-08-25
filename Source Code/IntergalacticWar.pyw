@@ -281,6 +281,22 @@ def main():
 
         pygame.display.update()
 
+    def paused():
+        while True:
+            for event in pygame.event.get():
+                paused_font = pygame.font.SysFont("comicsans", 35)
+                paused_label = paused_font.render("Press 'r' to resume game.", 1, (255,0,0))
+                WIN.blit(paused_label, (WIDTH/2 - paused_label.get_width()/2, 280))
+                pygame.display.update()
+                if event.type == pygame.QUIT:
+                    pygame.QUIT()
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
+                    return
+                elif event.type == pygame.KEYDOWN and event.key == pygame.K_m:
+                    main_menu()
+                else:
+                    pass
+
     while run:
         clock.tick(FPS)
         redraw_window()
@@ -309,7 +325,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-        
+
         # Take keyboard buttons input
         keys = pygame.key.get_pressed()
         if keys[pygame.K_a] and player.x - player_vel > 0: # Move left
@@ -333,6 +349,8 @@ def main():
         if keys[pygame.K_m]:
             BACKGROUND_SOUND.stop()
             main_menu()
+        if keys[pygame.K_p]:
+            paused()
 
         for enemy in enemies[:]:
             enemy.move(enemy_vel)
@@ -360,19 +378,21 @@ def main_menu():
             title_label_line1 = title_font.render("Key maps:", 1, (255,255,255))
             title_label_line2 = title_font.render("a : Left  |  d : Right", 1, (255,255,255))
             title_label_line3 = title_font.render("w : Up    |  s : Down", 1, (255,255,255))
-            title_label_line4 = title_font.render("Arrows : Movement", 1, (255,255,255))
-            title_label_line5 = title_font.render("SPACE : Shoot", 1, (255,255,255))
-            title_label_line6 = title_font.render("m : Menu", 1, (255,255,255))
-            title_label_line7 = title_font.render("Any key to go back...", 1, (255,255,255))
+            title_label_line4 = title_font.render("p : pause   |  r : resume", 1, (255,255,255))
+            title_label_line5 = title_font.render("Arrows : Movement", 1, (255,255,255))
+            title_label_line6 = title_font.render("SPACE : Shoot", 1, (255,255,255))
+            title_label_line7 = title_font.render("m : Main menu", 1, (255,255,255))
+            title_label_line8 = title_font.render("Press any key to go back...", 1, (255,255,255))
 
             # blit text on display
-            WIN.blit(title_label_line1, (WIDTH/2 - title_label_line1.get_width()/2, 110))
-            WIN.blit(title_label_line2, (WIDTH/2 - title_label_line2.get_width()/2, 190))
-            WIN.blit(title_label_line3, (WIDTH/2 - title_label_line3.get_width()/2, 240))
-            WIN.blit(title_label_line4, (WIDTH/2 - title_label_line4.get_width()/2, 290))
-            WIN.blit(title_label_line5, (WIDTH/2 - title_label_line5.get_width()/2, 340))
-            WIN.blit(title_label_line6, (WIDTH/2 - title_label_line6.get_width()/2, 390))
-            WIN.blit(title_label_line7, (WIDTH/2 - title_label_line7.get_width()/2, 440))
+            WIN.blit(title_label_line1, (WIDTH/2 - title_label_line1.get_width()/2, 60))
+            WIN.blit(title_label_line2, (WIDTH/2 - title_label_line2.get_width()/2, 140))
+            WIN.blit(title_label_line3, (WIDTH/2 - title_label_line3.get_width()/2, 190))
+            WIN.blit(title_label_line4, (WIDTH/2 - title_label_line4.get_width()/2, 240))
+            WIN.blit(title_label_line5, (WIDTH/2 - title_label_line5.get_width()/2, 290))
+            WIN.blit(title_label_line6, (WIDTH/2 - title_label_line6.get_width()/2, 340))
+            WIN.blit(title_label_line7, (WIDTH/2 - title_label_line7.get_width()/2, 390))
+            WIN.blit(title_label_line8, (WIDTH/2 - title_label_line8.get_width()/2, 450))
 
             pygame.display.update()
             for event in pygame.event.get():
