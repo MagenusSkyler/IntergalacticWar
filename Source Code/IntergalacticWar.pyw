@@ -59,10 +59,17 @@ pygame.mixer.init()
 laser_sound = pygame.mixer.Sound(os.path.join("appdata", "music", "laser_sound.mp3"))
 death_sound = pygame.mixer.Sound(os.path.join("appdata", "music", "death_sound.mp3"))
 
-# Importing menu background music
+# Importing background music
 menu_sound = pygame.mixer.music.load(os.path.join("appdata", "music", "menu_music.mp3"))
+default_music = pygame.mixer.Sound(os.path.join("appdata", "music", "default_music.mp3"))
+zendar_music = pygame.mixer.Sound(os.path.join("appdata", "music", "zendar_music.mp3"))
+where_music = pygame.mixer.Sound(os.path.join("appdata", "music", "where_music.mp3"))
+magic_music = pygame.mixer.Sound(os.path.join("appdata", "music", "magic_music.mp3"))
+darkend_music = pygame.mixer.Sound(os.path.join("appdata", "music", "darkend_music.mp3"))
+galactic_music = pygame.mixer.Sound(os.path.join("appdata", "music", "galactic_music.mp3"))
+deepdark_music = pygame.mixer.Sound(os.path.join("appdata", "music", "deepdark_music.mp3"))
 
-# Set music sound
+# Set music/sound volume
 pygame.mixer.music.set_volume(1.5)
 laser_sound.set_volume(0.2)
 death_sound.set_volume(0.5)
@@ -74,7 +81,7 @@ LASER_SELECTED = YELLOW_LASER
 DEFAULT_SHIP = 0
 MAP_BACKGROUND = MAP_DEFAULT
 DEFAULT_MAP = 0
-BACKGROUND_SOUND = None
+BACKGROUND_SOUND = default_music
 PLAY_SOUND = 0
 
 # Initializing ships laser class
