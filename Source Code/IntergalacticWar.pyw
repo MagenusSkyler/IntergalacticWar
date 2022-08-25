@@ -73,6 +73,13 @@ deepdark_music = pygame.mixer.Sound(os.path.join("appdata", "music", "deepdark_m
 pygame.mixer.music.set_volume(1.5)
 laser_sound.set_volume(0.2)
 death_sound.set_volume(0.5)
+default_music.set_volume(0.5)
+zendar_music.set_volume(0.5)
+where_music.set_volume(0.5)
+magic_music.set_volume(0.5)
+darkend_music.set_volume(0.5)
+galactic_music.set_volume(0.5)
+deepdark_music.set_volume(0.5)
 
 # Setting up global variable
 R, G, B = 255, 255, 255
@@ -229,6 +236,10 @@ def main():
     enemy_vel = 1
     main_font = pygame.font.SysFont("comicsans", 30)
     lost_font = pygame.font.SysFont("comicsans", 35)
+    if PLAY_SOUND == 0:
+        BACKGROUND_SOUND.play(-1)
+    else:
+        pass
 
     enemies = []
     wave_length = 5
@@ -265,6 +276,7 @@ def main():
                 pass
             else:
                 if PLAY_SOUND == 0:
+                    BACKGROUND_SOUND.stop()
                     death_sound.play(1)
 
         pygame.display.update()
@@ -319,6 +331,7 @@ def main():
         if keys[pygame.K_SPACE]:
             player.shoot() # Let player shoot laser if not on cooldown
         if keys[pygame.K_m]:
+            BACKGROUND_SOUND.stop()
             main_menu()
 
         for enemy in enemies[:]:
@@ -431,24 +444,31 @@ def main_menu():
         global BACKGROUND_SOUND
         if selected_index == 0:
             MAP_BACKGROUND = MAP_DEFAULT
+            BACKGROUND_SOUND = default_music
             DEFAULT_MAP = 0
         elif selected_index == 1:
             MAP_BACKGROUND = MAP_ZENDARIA
+            BACKGROUND_SOUND = zendar_music
             DEFAULT_MAP = 1
         elif selected_index == 2:
             MAP_BACKGROUND = MAP_NOWHERE
+            BACKGROUND_SOUND = where_music
             DEFAULT_MAP = 2
         elif selected_index == 3:
             MAP_BACKGROUND = MAP_MAGIC
+            BACKGROUND_SOUND = magic_music
             DEFAULT_MAP = 3
         elif selected_index == 4:
             MAP_BACKGROUND = MAP_DARKEND
+            BACKGROUND_SOUND = darkend_music
             DEFAULT_MAP = 4
         elif selected_index == 5:
             MAP_BACKGROUND = MAP_INTERGALACTIC
+            BACKGROUND_SOUND = galactic_music
             DEFAULT_MAP = 5
         elif selected_index == 6:
             MAP_BACKGROUND = MAP_DEEP_DARK
+            BACKGROUND_SOUND = deepdark_music
             DEFAULT_MAP = 6
         else:
             pass
