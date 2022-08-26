@@ -474,10 +474,11 @@ def main_menu():
     # Draw menu on screen with prefered look
     menu = pygame_menu.menu.Menu("Intergalactic War", WIDTH -10, HEIGHT -10, theme=theme_body)
 
+    # Set map music and map background image obj
     def map_selector(value, selected_index):
-        global MAP_BACKGROUND
-        global DEFAULT_MAP
-        global BACKGROUND_SOUND
+        global MAP_BACKGROUND   # Map background
+        global DEFAULT_MAP      # Keep map selected in menu
+        global BACKGROUND_SOUND # Custom map music
         if selected_index == 0:
             MAP_BACKGROUND = MAP_DEFAULT
             BACKGROUND_SOUND = default_music
@@ -509,9 +510,10 @@ def main_menu():
         else:
             pass
 
+    # Set space ship and laser for players ship
     def ship_selector(value, selected_index):
-        global PLAYER_SELECTED
-        global LASER_SELECTED
+        global PLAYER_SELECTED  # Selected player
+        global LASER_SELECTED   # Selected laser for selected player
         global DEFAULT_SHIP
         if selected_index == 1:
             PLAYER_SELECTED = PLAYERS_SHIP_1
@@ -544,6 +546,7 @@ def main_menu():
         else:
             pass
 
+    # sound setting on or off
     def sound_set(value, selected_index):
         global PLAY_SOUND
         if selected_index == 1:
@@ -553,6 +556,7 @@ def main_menu():
             PLAY_SOUND = 1
             pygame.mixer.music.fadeout(2000)
 
+    # map selector
     menu.add.selector(
         "Map:\t",
         [('Default', 0), ('Zendaria', 1), ('Nowhere', 2), ('Magic', 3),
@@ -560,6 +564,7 @@ def main_menu():
         onchange=(map_selector), onreturn=(map_selector), default=DEFAULT_MAP
         )
 
+    # player ship selector
     menu.add.selector(
         "Ship:\t",
         [('Battleship', 1), ('Cruiseship', 2), ('Pelican', 3), ('Gradius', 4),
@@ -567,6 +572,7 @@ def main_menu():
         onchange=(ship_selector), onreturn=(ship_selector), default=DEFAULT_SHIP
         )
 
+    # sound settings selector
     menu.add.selector(
         "Sound:\t",
         [('ON', 1), ('OFF', 2)],
@@ -574,6 +580,7 @@ def main_menu():
         default=PLAY_SOUND
         )
     
+    # other menu buttons
     menu.add.button(" Keymaps ", keymaps)
     menu.add.button("  About  ", about)
     menu.add.button("   Play   ", start_the_game)
@@ -581,3 +588,6 @@ def main_menu():
 
     menu.mainloop(WIN, bgfun=menu_background)
 main_menu()
+
+
+
