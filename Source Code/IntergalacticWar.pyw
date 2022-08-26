@@ -1,22 +1,22 @@
-# Importing all modules
-import os
-import time
+# Importing all necessary modules ✔
 import pygame
 import random
+import os,time
 import pygame_menu
 
-# Initialize the pygame & font
-pygame.font.init()
-pygame.init()
+# Initializing the pygame modules
+pygame.mixer.init() # pygame music mixer 🎶
+pygame.font.init()  # pygame text font 📜
+pygame.init()       # initialize all imported pygame modules 🎲
 
-# Set window property
-WIDTH, HEIGHT = 700, 600
+# Set window property and icon 💻
+WIDTH, HEIGHT = 700, 600 # window size 💻
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Intergalactic War")
+pygame.display.set_caption("Intergalactic War") # window title
 WINDOW_ICON = pygame.image.load(os.path.join("appdata", "texture", "game_icon", "app_icon.ico"))
-pygame.display.set_icon(WINDOW_ICON)
+pygame.display.set_icon(WINDOW_ICON) # window icon 🧊
 
-# Importing enemies spaceship images
+# Importing enemies spaceship 🚀 images as obj
 SKY_SPACE_SHIP = pygame.image.load(os.path.join("appdata", "texture", "enemy_ships", "ship_sky.bmp"))
 RED_SPACE_SHIP = pygame.image.load(os.path.join("appdata", "texture", "enemy_ships", "ship_red.bmp"))
 BLUE_SPACE_SHIP = pygame.image.load(os.path.join("appdata", "texture", "enemy_ships", "ship_blue.bmp"))
@@ -28,7 +28,7 @@ GREEN2_SPACE_SHIP = pygame.image.load(os.path.join("appdata", "texture", "enemy_
 VIOLET_SPACE_SHIP = pygame.image.load(os.path.join("appdata", "texture", "enemy_ships", "ship_violet.bmp"))
 ORANGE_SPACE_SHIP = pygame.image.load(os.path.join("appdata", "texture", "enemy_ships", "ship_orange.bmp"))
 
-# Importing players spaceship images
+# Importing players spaceship 🚀 images as obj
 PLAYERS_SHIP_1 = pygame.image.load(os.path.join("appdata", "texture", "player_ships", "players_ship_1.bmp"))
 PLAYERS_SHIP_2 = pygame.image.load(os.path.join("appdata", "texture", "player_ships", "players_ship_2.bmp"))
 PLAYERS_SHIP_3 = pygame.image.load(os.path.join("appdata", "texture", "player_ships", "players_ship_3.bmp"))
@@ -37,14 +37,14 @@ PLAYERS_SHIP_5 = pygame.image.load(os.path.join("appdata", "texture", "player_sh
 PLAYERS_SHIP_6 = pygame.image.load(os.path.join("appdata", "texture", "player_ships", "players_ship_6.bmp"))
 PLAYERS_SHIP_7 = pygame.image.load(os.path.join("appdata", "texture", "player_ships", "players_ship_7.bmp"))
 
-# Importing all laser images
+# Importing all laser 🌠 images as obj
 RED_LASER = pygame.image.load(os.path.join("appdata", "texture", "ship_lasers", "laser_red.bmp"))
 BLUE_LASER = pygame.image.load(os.path.join("appdata", "texture", "ship_lasers", "laser_blue.bmp"))
 GREEN_LASER = pygame.image.load(os.path.join("appdata", "texture", "ship_lasers", "laser_green.bmp"))
 PURPLE_LASER = pygame.image.load(os.path.join("appdata", "texture", "ship_lasers", "laser_purple.bmp"))
 YELLOW_LASER = pygame.image.load(os.path.join("appdata", "texture", "ship_lasers", "laser_yellow.bmp"))
 
-# Importing map Images
+# Importing map (🗺) Images as obj
 UNDER_BACKGROUND = pygame.transform.scale(pygame.image.load(os.path.join("appdata", "texture", "background", "background.png")), (WIDTH, HEIGHT))
 MAP_DEFAULT = pygame.transform.scale(pygame.image.load(os.path.join("appdata", "texture", "background", "default.bmp")), (WIDTH, HEIGHT))
 MAP_ZENDARIA = pygame.transform.scale(pygame.image.load(os.path.join("appdata", "texture", "background", "zendaria.bmp")), (WIDTH, HEIGHT))
@@ -54,12 +54,11 @@ MAP_DARKEND = pygame.transform.scale(pygame.image.load(os.path.join("appdata", "
 MAP_INTERGALACTIC = pygame.transform.scale(pygame.image.load(os.path.join("appdata", "texture", "background", "intergalactic.bmp")), (WIDTH, HEIGHT))
 MAP_DEEP_DARK = pygame.transform.scale(pygame.image.load(os.path.join("appdata", "texture", "background", "deep_dark.bmp")), (WIDTH, HEIGHT))
 
-# Importing in game sounds
-pygame.mixer.init()
+# Importing in game sounds 🔊
 laser_sound = pygame.mixer.Sound(os.path.join("appdata", "music", "laser_sound.mp3"))
 death_sound = pygame.mixer.Sound(os.path.join("appdata", "music", "death_sound.mp3"))
 
-# Importing background music
+# Importing background music 🔉
 menu_sound = pygame.mixer.music.load(os.path.join("appdata", "music", "menu_music.mp3"))
 default_music = pygame.mixer.Sound(os.path.join("appdata", "music", "default_music.mp3"))
 zendar_music = pygame.mixer.Sound(os.path.join("appdata", "music", "zendar_music.mp3"))
@@ -69,8 +68,8 @@ darkend_music = pygame.mixer.Sound(os.path.join("appdata", "music", "darkend_mus
 galactic_music = pygame.mixer.Sound(os.path.join("appdata", "music", "galactic_music.mp3"))
 deepdark_music = pygame.mixer.Sound(os.path.join("appdata", "music", "deepdark_music.mp3"))
 
-# Set music/sound volume
-pygame.mixer.music.set_volume(1.5)
+# Set music/sound volume 🔈🔉🔊
+pygame.mixer.music.set_volume(1.5)  # background music sound 🔊
 laser_sound.set_volume(0.2)
 death_sound.set_volume(0.5)
 default_music.set_volume(0.5)
@@ -82,16 +81,16 @@ galactic_music.set_volume(0.5)
 deepdark_music.set_volume(0.5)
 
 # Setting up global variable
-R, G, B = 255, 255, 255
-PLAYER_SELECTED = PLAYERS_SHIP_1
-LASER_SELECTED = YELLOW_LASER
-DEFAULT_SHIP = 0
-MAP_BACKGROUND = MAP_DEFAULT
-DEFAULT_MAP = 0
-BACKGROUND_SOUND = default_music
-PLAY_SOUND = 0
+R, G, B = 255, 255, 255             # White RGB color ⚪
+PLAYER_SELECTED = PLAYERS_SHIP_1    # Used for changing player ships 🚀
+LASER_SELECTED = YELLOW_LASER       # Used to change laser depending on ship color
+DEFAULT_SHIP = 0                    # Used to show and keep selected ship name on menu
+MAP_BACKGROUND = MAP_DEFAULT        # Used to changed map background 📷
+DEFAULT_MAP = 0                     # Used to keep map selected unless changed
+BACKGROUND_SOUND = default_music    # Used to change background sound depending on map
+PLAY_SOUND = 0                      # 0 = Sound on by default 🔊, 1 = off by default 🔈❌
 
-# Initializing ships laser class
+# Initializing ships laser class 🌠
 class Laser:
     def __init__(self, x, y, img):
         self.x = x
@@ -111,9 +110,9 @@ class Laser:
     def collision(self, obj):
         return collide(self, obj)
 
-# Initializing ship class
+# Initializing ship class 🚀
 class Ship:
-    COOLDOWN = 12
+    COOLDOWN = 12   # Cooldown time for shooting lasers '⌚
     
     def __init__(self, x, y, health=100):
         self.x = x
@@ -150,7 +149,8 @@ class Ship:
             laser = Laser(self.x+42, self.y, self.laser_img)
             self.lasers.append(laser)
             self.cool_down_counter = 1
-            # play sound after checking settings
+            
+            # play sound after checking sound settings ⏲
             if PLAY_SOUND == 0:
                 laser_sound.play()
 
@@ -162,7 +162,7 @@ class Ship:
 
 # Initializing players ship class
 class Player(Ship):
-    def __init__(self, x, y, health=200): # add players health
+    def __init__(self, x, y, health=200): # add players health 💞
         super().__init__(x, y, health)
         self.ship_img = PLAYER_SELECTED
         self.laser_img = LASER_SELECTED
@@ -190,7 +190,7 @@ class Player(Ship):
         pygame.draw.rect(window, (255,0,0), (self.x, self.y + self.ship_img.get_height() + 10, self.ship_img.get_width(), 10))
         pygame.draw.rect(window, (0,255,0), (self.x, self.y + self.ship_img.get_height() + 10, self.ship_img.get_width() * (self.health/self.max_health), 10))
 
-# Initializing enemys ship class
+# Initializing enemys ship class 🚀
 class Enemy(Ship):
     COLOR_MAP = {
         "red": (RED_SPACE_SHIP, RED_LASER),
@@ -203,7 +203,8 @@ class Enemy(Ship):
         "violet": (VIOLET_SPACE_SHIP, PURPLE_LASER),
         "grey": (GREY_SPACE_SHIP, RED_LASER),
         "red2": (RED2_SPACE_SHIP, RED_LASER)
-    }
+    }       # List of enemies and their laser colors ⚫⚪ to be used as enemy 🚀 in enemies list
+
     def __init__(self, x, y, color, health=100):
         super().__init__(x, y, health)
         self.ship_img, self.laser_img = self.COLOR_MAP[color]
@@ -214,11 +215,11 @@ class Enemy(Ship):
 
     def shoot(self):
         if self.cool_down_counter == 0:
-            laser = Laser(self.x+36, self.y, self.laser_img) # Set laser position for enemy ships
+            laser = Laser(self.x+36, self.y, self.laser_img) # Set laser 🌠 position for enemy ships 🚀
             self.lasers.append(laser)
             self.cool_down_counter = 1
             
-            # play sound after checking settings
+            # play laser 🌠 sound if laser is shot after checking sound settings ⚙
             if PLAY_SOUND == 0:
                 laser_sound.play()
 
@@ -227,130 +228,139 @@ def collide(obj1, obj2):
     offset_y = obj2.y - obj1.y
     return obj1.mask.overlap(obj2.mask, (offset_x, offset_y)) != None
 
-# Main game loop
+# Main game function 🎮
 def main():
-    run = True
-    FPS = 60
-    level = 0
-    lives = 10 # Set Player Lives
+    run = True  # Set game loop ➰
+    FPS = 60    # Set game speed 🚅
+    level = 0   # Set level to 0 when game starts
+    lives = 10  # Set Player Lives 💕💕
     enemy_vel = 1
     main_font = pygame.font.SysFont("comicsans", 30)
     lost_font = pygame.font.SysFont("comicsans", 35)
+
+    # Play maps background music 🎼 if sound is not set to off 🔈❌
     if PLAY_SOUND == 0:
         BACKGROUND_SOUND.play(-1)
     else:
         pass
 
     enemies = []
-    wave_length = 5
+    wave_length = 5 # Number of enemies in every level ⚡
 
-    player_vel = 5
-    laser_vel = 5
+    player_vel = 5              # Players ship 🚀 speed
+    laser_vel = 5               # Player ships laser speed 🚅
     player = Player(300, 450)
 
     clock = pygame.time.Clock()
 
-    lost = False
-    lost_count = 0
-    
+    lost = False    # Set to player has not lost
+    lost_count = 0  # Counter for lost 💔 loops pause screen
+
     def redraw_window():
         WIN.blit(MAP_BACKGROUND, (0,0))
         # Create text label with font
         lives_label = main_font.render(f"Lives: {lives}", 1, (R, G, B))
         level_label = main_font.render(f"Level: {level}", 1, (R, G, B))
-        # Draw labeled text on display
+        # Draw labeled text on display 📜➡💻
         WIN.blit(lives_label, (10,5))
         WIN.blit(level_label, (WIDTH - level_label.get_width() - 10, 5))
 
         for enemy in enemies:
-            enemy.draw(WIN)
+            enemy.draw(WIN)     # Draw enemy ships on screen 🚀➡💻
 
-        player.draw(WIN)
+        player.draw(WIN)        # Dwaw players ship on screen 🚀➡💻
 
         if lost:
             lost_label = lost_font.render("You couldn't survive any longer :(", 1, (255,0,0))
             WIN.blit(lost_label, (WIDTH/2 - lost_label.get_width()/2, 280))
-            pygame.mixer.music.stop() # stop music
-            explosion = death_sound.get_num_channels()
+            pygame.mixer.music.stop() # stop music if lost
+            explosion = death_sound.get_num_channels()  # Check how many times death sound is playing 🔊
             if explosion == 1:
-                pass
+                pass                                    # if death sound is playing then dont play it again
             else:
                 if PLAY_SOUND == 0:
-                    BACKGROUND_SOUND.stop()
-                    death_sound.play(1)
+                    BACKGROUND_SOUND.stop()             # if death sound is not playing then stop background sound
+                    death_sound.play(1)                 # after thet play death_sound onece
 
-        pygame.display.update()
+        pygame.display.update()     # Update screen with changes
 
+    # Stop game if "P" is pressed
     def paused():
         while True:
             for event in pygame.event.get():
                 paused_font = pygame.font.SysFont("comicsans", 35)
-                paused_label = paused_font.render("Press 'r' to resume game.", 1, (255,0,0))
-                WIN.blit(paused_label, (WIDTH/2 - paused_label.get_width()/2, 280))
+                paused_label1 = paused_font.render("Press 'r' to resume game or", 1, (R,G,B))
+                paused_label2 = paused_font.render("Press 'm' to get back to menu.", 1, (R,G,B))
+                WIN.blit(paused_label1, (WIDTH/2 - paused_label1.get_width()/2, 260))
+                WIN.blit(paused_label2, (WIDTH/2 - paused_label2.get_width()/2, 300))
                 pygame.display.update()
                 if event.type == pygame.QUIT:
                     pygame.QUIT()
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_r:    # Run the loop is r is pressed
                     return
-                elif event.type == pygame.KEYDOWN and event.key == pygame.K_m:
+                elif event.type == pygame.KEYDOWN and event.key == pygame.K_m:  # Go back to menu if m is pressed
                     main_menu()
-                else:
+                else:           # Do nothing and keep looping if none of the keys are pressed
                     pass
 
+    # Main loop while the game is running
     while run:
-        clock.tick(FPS)
-        redraw_window()
+        clock.tick(FPS)     # tick clock according to set FPS value ⏳
+        redraw_window()     # Update window every FPS count
 
+        # Check if player died by checking if lives or health is 0 💔
         if lives <= 0 or player.health <= 0:
             lost = True
             lost_count += 1
 
+        # if player has dies then run this ❤➡❌
         if lost:
             if lost_count > FPS * 2:
                 death_sound.stop()
-                time.sleep(3)
+                time.sleep(3)   # sleep 💤 for 3 second every time function loops ➰
                 if PLAY_SOUND == 0:
                     pygame.mixer.music.play(fade_ms=1000)
-                run = False
+                run = False # go back to main menu if waiting time ⌚ is over ⭕
             else:
-                continue
+                continue    # if set time has not passed keep looping ➰
 
         if len (enemies) == 0:
             level +=1
             wave_length += 3
             for i in range(wave_length):
+                # Spwan enemy from enemies list at random time in random postion
                 enemy = Enemy(random.randrange(50, WIDTH-100), random.randrange(-1500, -100), random.choice(["red", "blue", "green", "purple", "sky", "green2", "orange", "violet", "grey", "red2"]))
                 enemies.append(enemy)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                run = False
+                run = False     # Stop game loop if app needed to be exited ❌
 
-        # Take keyboard buttons input
+        # Take keyboard buttons input ⌨
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_a] and player.x - player_vel > 0: # Move left
+        if keys[pygame.K_a] and player.x - player_vel > 0: # Move left ⏮
             player.x -= player_vel
-        if keys[pygame.K_d] and player.x + player_vel + player.get_width() < WIDTH: # Move Right
+        if keys[pygame.K_d] and player.x + player_vel + player.get_width() < WIDTH: # Move Right ⏯
             player.x += player_vel
-        if keys[pygame.K_w] and player.y - player_vel > 0: # Move up
+        if keys[pygame.K_w] and player.y - player_vel > 0: # Move up 🔝
             player.y -= player_vel
-        if keys[pygame.K_s] and player.y + player_vel + player.get_height() + 15 < HEIGHT: # Move down
+        if keys[pygame.K_s] and player.y + player_vel + player.get_height() + 15 < HEIGHT: # Move down ⏬
             player.y += player_vel
-        if keys[pygame.K_LEFT] and player.x - player_vel > 0: # Move left
+        if keys[pygame.K_LEFT] and player.x - player_vel > 0: # Move left ⏮
             player.x -= player_vel
-        if keys[pygame.K_RIGHT] and player.x + player_vel + player.get_width() < WIDTH: # Move right
+        if keys[pygame.K_RIGHT] and player.x + player_vel + player.get_width() < WIDTH: # Move right ⏯
             player.x += player_vel
-        if keys[pygame.K_UP] and player.y - player_vel > 0: # Move up
+        if keys[pygame.K_UP] and player.y - player_vel > 0: # Move up 🔝
             player.y -= player_vel
-        if keys[pygame.K_DOWN] and player.y + player_vel + player.get_height() + 15 < HEIGHT: # Move down
+        if keys[pygame.K_DOWN] and player.y + player_vel + player.get_height() + 15 < HEIGHT: # Move down ⏬
             player.y += player_vel
         if keys[pygame.K_SPACE]:
-            player.shoot() # Let player shoot laser if not on cooldown
+            player.shoot() # Let player shoot laser if not on cooldown 🌠🔫
         if keys[pygame.K_m]:
             BACKGROUND_SOUND.stop()
-            main_menu()
+            main_menu()     # Go back to menu if m is pressed 🔲
         if keys[pygame.K_p]:
-            paused()
+            paused()        # go to pause loop if p is pressed 🔳
 
         for enemy in enemies[:]:
             enemy.move(enemy_vel)
@@ -368,8 +378,10 @@ def main():
 
         player.move_lasers(-laser_vel, enemies)
 
+# Main menu of the game
 def main_menu():
     
+    # Show players all the keymaps ⏬🔝⏮⏭
     def keymaps():
         title_font = pygame.font.SysFont("comicsans", 32)
         run = True
@@ -384,7 +396,7 @@ def main_menu():
             title_label_line7 = title_font.render("m : Main menu", 1, (255,255,255))
             title_label_line8 = title_font.render("Press any key to go back...", 1, (255,255,255))
 
-            # blit text on display
+            # blit text on display 📜➡💻
             WIN.blit(title_label_line1, (WIDTH/2 - title_label_line1.get_width()/2, 60))
             WIN.blit(title_label_line2, (WIDTH/2 - title_label_line2.get_width()/2, 140))
             WIN.blit(title_label_line3, (WIDTH/2 - title_label_line3.get_width()/2, 190))
@@ -401,7 +413,8 @@ def main_menu():
                 if event.type == pygame.KEYDOWN:
                     main_menu()
         pygame.quit()
-    
+
+    # Show user some information 📜 about the source if the game 🎮
     def about():
         title_font = pygame.font.SysFont("comicsans", 25)
         run = True
@@ -413,6 +426,7 @@ def main_menu():
             title_label_line4 = title_font.render("GitHub : https://github.com/MagenusSkyler", 1, (255,255,255))
             title_label_line5 = title_font.render("Any key to go back...", 1, (255,255,255))
 
+            # Blit text on the screen 📜➡💻
             WIN.blit(title_label_line1, (WIDTH/2 - title_label_line1.get_width()/2, 180))
             WIN.blit(title_label_line2, (WIDTH/2 - title_label_line2.get_width()/2, 220))
             WIN.blit(title_label_line3, (WIDTH/2 - title_label_line3.get_width()/2, 260))
@@ -427,11 +441,12 @@ def main_menu():
                     main_menu()
         pygame.quit()
 
+    # Stop playing menu music 🎼 if game 🎮 has started
     def start_the_game():
         pygame.mixer.music.fadeout(64)
         main()
 
-    # Play menu sound when menu is open
+    # Play menu sound 🔊 when menu is open
     if PLAY_SOUND == 0:
         menu_music = pygame.mixer.music.get_busy()
         if menu_music == True:
@@ -441,7 +456,7 @@ def main_menu():
     else:
         pass
 
-    # Background (under the menu)
+    # Background (under the menu) for sides and corners
     def menu_background():
         WIN.blit(UNDER_BACKGROUND, (0,0))
     
@@ -456,6 +471,7 @@ def main_menu():
     theme_body.title_background_color=(42, 104, 112)
     theme_body.background_color = menu_bg
 
+    # Draw menu on screen with prefered look
     menu = pygame_menu.menu.Menu("Intergalactic War", WIDTH -10, HEIGHT -10, theme=theme_body)
 
     def map_selector(value, selected_index):
