@@ -1,9 +1,6 @@
 IntergalacticWar needs the following modules to run:
 
->> os
->> time
 >> pygame
->> random
 >> pygame_menu
 
 Install pygame and pygame-menu in Windows:
@@ -16,3 +13,4 @@ Install pygame and pygame-menu in Linux and mac:
 > pip3 install pygame
 > pip3 install pygame-menu -U
 
+If you are on windows you can run "Get-package.bat" to install modules.
