@@ -41,15 +41,11 @@ Direct download
 [IntergalacticWar Source Code](https://github.com/MagenusSkyler/IntergalacticWar/archive/refs/heads/main.zip)
 ## Screenshots
 
-Main menu:
 ![App Screenshot](https://github.com/MagenusSkyler/IntergalacticWar/blob/main/Preview/2022-08-25-Intergalactic%20War.png?raw=true)
 
-Default map:
 ![App Screenshot](https://github.com/MagenusSkyler/IntergalacticWar/blob/main/Preview/Preview_2.png?raw=true)
 
-Game paused
 ![App Screenshot](https://github.com/MagenusSkyler/IntergalacticWar/blob/main/Preview/Preview_6.png?raw=true)
 
-You died:
 ![App Screenshot](https://github.com/MagenusSkyler/IntergalacticWar/blob/main/Preview/Preview_4.png?raw=true)
 
